@@ -1,0 +1,87 @@
+@mixin truncated {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin button {
+  background-color: $secondary;
+  padding: 0.5rem 1rem;
+  border: 1px solid $secondary;
+  border-radius: 4px;
+  color: white;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    background-color: $light-secondary;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $light-gray;
+    border: 1px solid $gray;
+    color: $gray;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $light-gray;
+      color: $gray;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin form {
+  width: 80%;
+  border: 1px solid $gray;
+  margin: 1rem auto;
+  padding: 2rem 2rem;
+  border-radius: 5px;
+
+  &__group {
+    position: relative;
+    margin: 2rem 0;
+
+    input {
+      border: none;
+      border-bottom: 1px solid $gray;
+      padding: 0.25rem 0.5rem 0.25rem 0;
+      width: 100%;
+
+      &[data-has-value="true"] {
+        & ~ label {
+          font-size: 0.7rem;
+          bottom: 1.5rem;
+        }
+      }
+
+      &:active,
+      &:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $gray;
+      }
+
+      &:focus {
+        border-bottom: 1px solid $secondary;
+
+        & ~ label {
+          font-size: 0.7rem;
+          bottom: 1.5rem;
+          color: $secondary;
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transition: all 0.1s ease-out;
+    }
+  }
+
+  button {
+    @include button;
+  }
+}
