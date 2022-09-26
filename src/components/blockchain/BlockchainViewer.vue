@@ -25,7 +25,7 @@ onMounted(() => {
     <BlockViewer v-for="(block, index) in chain.blocks"
                 :key="block.timestamp"
                 :block="block"
-                :block-number="index + 1"
+                :block-number="index"
                 :is-active="selectedBlock.hash === block.hash"
                 @show-transactions="showTransactions(block)" />
   </div>
